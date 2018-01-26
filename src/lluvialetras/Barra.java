@@ -20,11 +20,11 @@ public class Barra extends JPanel{
     private final int DCHA=2;
 
     public Barra() {
-        
+        System.out.println("hola");
     }
     
     public void mover(){
         
     }
-
+    
 }
