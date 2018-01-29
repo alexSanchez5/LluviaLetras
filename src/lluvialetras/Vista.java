@@ -10,10 +10,25 @@ package lluvialetras;
  * @author alejandro sanchez
  */
 public class Vista {
+    
     private Controlador c;
+    private Barra barra;
+    private Letra letra;
     
     public Vista(Controlador c){
         this.c=c;
+    }
+    
+    public void crearBarra(){
+        
+    }
+    
+    public void crearMenu(){
+        
+    }
+    
+    public void crearPanel(){
+        
     }
     
     
