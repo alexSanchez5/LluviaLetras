@@ -20,14 +20,14 @@ public class Vista {
     }
     
     public void crearBarra(){
-        
+        barra=new Barra();
     }
     
     public void crearMenu(){
         
     }
     
-    public void crearPanel(){
+    public void crearVentana(){
         
     }
     

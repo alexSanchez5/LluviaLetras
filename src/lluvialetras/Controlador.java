@@ -10,6 +10,7 @@ package lluvialetras;
  * @author alejandro sanchez
  */
 public class Controlador {
+    
     Vista v=new Vista(this);
     Modelo m=new Modelo(this);
     
