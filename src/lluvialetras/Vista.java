@@ -5,11 +5,13 @@
  */
 package lluvialetras;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author alejandro sanchez
  */
-public class Vista {
+public class Vista extends JFrame{
     
     private Controlador c;
     private Barra barra;
@@ -28,7 +30,10 @@ public class Vista {
     }
     
     public void crearVentana(){
-        
+        //general
+        this.setBounds(100, 100, 400, 600);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setVisible(true);
     }
     
     
