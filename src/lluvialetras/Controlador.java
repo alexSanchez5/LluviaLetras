@@ -26,17 +26,25 @@ public class Controlador implements KeyListener, ActionListener{
 //keyListener
     @Override
     public void keyTyped(KeyEvent ke) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void keyPressed(KeyEvent ke) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        switch(ke.getKeyCode()){
+            case 40:
+                v.moverBarra(0);
+                break;
+            case 37:
+                v.moverBarra(2);
+                break;
+            case 39:
+                v.moverBarra(1);
+                break;
+        }
     }
 
     @Override
     public void keyReleased(KeyEvent ke) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 //Action Listener
     @Override
