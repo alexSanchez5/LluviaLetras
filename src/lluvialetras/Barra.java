@@ -15,13 +15,14 @@ import javax.swing.JPanel;
 public class Barra extends JPanel{
     
     private int x=200,y=500;
+    private final int ANCHO=70,ALTO=20;
     private int direccion;
     private final int PARADO=0;
     private final int IZDA=1;
     private final int DCHA=2;
 
     public Barra() {
-        setBounds(x,y,70,20);
+        setBounds(x,y,ANCHO,ALTO);
         setBackground(Color.red);
     }
     
@@ -49,6 +50,12 @@ public class Barra extends JPanel{
     public int getX() {
         return x;
     }
+
+    public int getANCHO() {
+        return ANCHO;
+    }
+    
+    
     
     
     
