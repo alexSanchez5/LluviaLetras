@@ -9,10 +9,10 @@ package lluvialetras;
 import java.awt.Menu;
 import java.awt.MenuBar;
 import java.awt.MenuItem;
-import javax.swing.JFrame;
 import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 /**
  *
@@ -27,15 +27,23 @@ public class Vista extends JFrame{
     private Menu archivo;
     private Menu nivel;
     private JPanel barraPerder;
+    private int velocidadCreacion=500;
     
     public Vista(Controlador c){
         this.c=c;
         crearVentana();
+        //crear Timer
+        new Timer(velocidadCreacion, c).start();
     }
     
     public void crearBarra(){
         barra=new Barra();
         add(barra);
+    }
+    
+    public void crearLetra(){
+        letra=new Letra();
+        letra.addKeyListener(c);
     }
     
     /**
@@ -46,10 +54,13 @@ public class Vista extends JFrame{
         
         archivo=new Menu("Archivo");
         MenuItem guardar=new MenuItem("Guardar");
+        guardar.addActionListener(c);
         archivo.add(guardar);
         MenuItem cargar=new MenuItem("Cargar");
+        cargar.addActionListener(c);
         archivo.add(cargar);
         MenuItem salir=new MenuItem("Salir");
+        salir.addActionListener(c);
         archivo.add(salir);
        
         nivel=new Menu("Nivel");
@@ -77,5 +88,13 @@ public class Vista extends JFrame{
         this.setVisible(true);
     }
     
-    
+    public void moverBarra(int d){
+        if(barra.getX()>400-barra.getANCHO() || barra.getX()<0){
+            barra.setDireccion(0);
+            barra.mover();
+        }else{
+            barra.setDireccion(d);
+            barra.mover();
+        }
+    }
 }
