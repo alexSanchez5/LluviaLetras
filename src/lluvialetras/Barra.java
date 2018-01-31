@@ -27,15 +27,29 @@ public class Barra extends JPanel{
     
     /**
      * Mueve la barra 10 hacia la dir que se le mande
-     * @param dir 
+     * 
      */
-    public void mover(int dir){
-        if(dir==IZDA && x+10<430){
+    public void mover(){
+        if(direccion==IZDA){
             x+=10;
-        }else if(dir==DCHA && x-10>0){
+        }else if(direccion==DCHA){
             x-=10;
         }
         setBounds(x,y,70,20);
     }
+    
+    /**
+     * Cambiar la direccion
+     * @param dir 
+     */
+    public void setDireccion(int dir){
+        direccion=dir;
+    }
+
+    public int getX() {
+        return x;
+    }
+    
+    
     
 }
