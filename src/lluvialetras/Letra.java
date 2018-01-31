@@ -5,6 +5,7 @@
  */
 package lluvialetras;
 
+import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 
@@ -17,9 +18,13 @@ public class Letra extends JLabel{
     private int velocidad=50;
     private int x,y=0;
     private boolean bajar=true;
+    ControladorLetra c;
 
     public Letra() {
-        x=aleatorio(400,5);
+        setBackground(Color.blue);
+        x=aleatorio(200,5);
+        setBounds(x,y,20,20);
+        c=new ControladorLetra(this);
         new Timer(velocidad, c).start();
 
     }
@@ -33,6 +38,7 @@ public class Letra extends JLabel{
     }
     
     public void mover(){
+        System.out.println(x+"-"+y);
         if(bajar){
             if (y < 285) {
                 y=y+5;
@@ -42,7 +48,7 @@ public class Letra extends JLabel{
                 y=y-5;
             }
         }
-
+        setBounds(x,y,20,20);
     }
 
     public int getVelocidad() {
