@@ -19,14 +19,16 @@ public class Letra extends JLabel{
     private int x,y=0;
     private boolean bajar=true;
     ControladorLetra c;
+    private Vista v;
 
-    public Letra() {
+    public Letra(String let,Vista v) {
+        this.v=v;
+        setText(let);
         setBackground(Color.blue);
-        x=aleatorio(200,5);
+        x=aleatorio(400,5);
         setBounds(x,y,20,20);
         c=new ControladorLetra(this);
         new Timer(velocidad, c).start();
-
     }
     
     public int aleatorio(int max, int min){
@@ -40,20 +42,19 @@ public class Letra extends JLabel{
     public void mover(){
         System.out.println(x+"-"+y);
         if(bajar){
-            if (y < 285) {
-                y=y+5;
-            }
+            y=y+5;
         }else{
-            if(y>0){
-                y=y-5;
-            }
+            y=y-5;
         }
         setBounds(x,y,20,20);
+        actualizar();
     }
 
     public int getVelocidad() {
         return velocidad;
     }
     
-    
+    public void actualizar(){
+        v.repaint();
+    }
 }

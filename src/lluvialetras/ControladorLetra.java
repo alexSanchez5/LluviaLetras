@@ -22,9 +22,8 @@ public class ControladorLetra implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        
         l.mover();
+        l.actualizar();
     }
-    
-    
+   
 }
