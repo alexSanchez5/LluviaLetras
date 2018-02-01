@@ -54,6 +54,10 @@ public class Barra extends JPanel{
     public int getANCHO() {
         return ANCHO;
     }
+
+    public void setX(int x) {
+        this.x = x;
+    }
     
     
     

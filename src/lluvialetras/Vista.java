@@ -82,6 +82,7 @@ public class Vista extends JFrame{
         barraPerder.setBounds(0, 500, 400, 20);
         barraPerder.setBackground(Color.yellow);
         add(barraPerder);
+        this.addKeyListener(c);
         //general
         this.setBounds(100, 100, 400, 600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -89,12 +90,18 @@ public class Vista extends JFrame{
     }
     
     public void moverBarra(int d){
-        if(barra.getX()>400-barra.getANCHO() || barra.getX()<0){
+        if(barra.getX()<10){
             barra.setDireccion(0);
+            barra.setX(10);
+            barra.mover();
+        }else if(barra.getX()>380-barra.getANCHO()){
+            barra.setDireccion(0);
+            barra.setX(310);
             barra.mover();
         }else{
             barra.setDireccion(d);
             barra.mover();
         }
+        repaint();
     }
 }
