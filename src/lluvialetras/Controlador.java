@@ -20,6 +20,7 @@ public class Controlador implements KeyListener, ActionListener{
     Vista v=new Vista(this);
     Modelo m=new Modelo(this);
     
+    
     public Controlador(){
         
     }
@@ -50,7 +51,7 @@ public class Controlador implements KeyListener, ActionListener{
     @Override
     public void actionPerformed(ActionEvent ae) {
         if(ae.getActionCommand()==null){
-            v.crearLetra();
+            v.crearLetra(""+m.DarLetra());
         }else if(ae.getActionCommand().equals("salir")){
             System.exit(0);
         }

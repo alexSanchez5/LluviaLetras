@@ -5,6 +5,8 @@
  */
 package lluvialetras;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author alejandro sanchez
@@ -15,6 +17,7 @@ public class Modelo {
     private int nivel=1;
     private char[] letrasNivelFacil=new char[8];
     private char[] letrasNivelDificil=new char[27];
+    private ArrayList<Character> comprobarLetras=new ArrayList();
     private int letraAscii;
     
     public Modelo(Controlador c){
@@ -69,13 +72,20 @@ public class Modelo {
      * @return 
      */
     public char DarLetra(){
-        if(nivel>2){
-            return letrasNivelFacil[aleatorio(8,1)];
+        char letra;
+        if(nivel<2){
+            letra= letrasNivelFacil[aleatorio(8,1)];
         }else{
-            return letrasNivelDificil[aleatorio(27,1)];
+            letra= letrasNivelDificil[aleatorio(27,1)];
         }
+        for (int i = 0; i < comprobarLetras.size(); i++) {
+            if(comprobarLetras.get(i)==letra){
+                return DarLetra();
+            }
+        }
+        comprobarLetras.add(letra);
+        return letra;
     }
-    
     
     /**
      * Genera un numero aleatorio

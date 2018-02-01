@@ -41,9 +41,10 @@ public class Vista extends JFrame{
         add(barra);
     }
     
-    public void crearLetra(){
-        letra=new Letra();
+    public void crearLetra(String let){
+        letra=new Letra(let,this);
         letra.addKeyListener(c);
+        add(letra);
     }
     
     /**
