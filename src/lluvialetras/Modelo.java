@@ -72,21 +72,25 @@ public class Modelo {
      * @return 
      */
     public char DarLetra(){
+        boolean repetido=false;
         char letra;
         if(nivel<2){
-            letra= letrasNivelFacil[aleatorio(8,1)];
+            letra= letrasNivelFacil[aleatorio(8,0)];
         }else{
             letra= letrasNivelDificil[aleatorio(27,1)];
         }
         for (int i = 0; i < comprobarLetras.size(); i++) {
             if(comprobarLetras.get(i)==letra){
-                return DarLetra();
+                repetido=true;
             }
         }
-        comprobarLetras.add(letra);
-        return letra;
+        if(repetido){
+            return '1';
+        }else{
+            comprobarLetras.add(letra);
+            return letra;
+        }
     }
-    
     /**
      * Genera un numero aleatorio
      * @param max
@@ -95,5 +99,15 @@ public class Modelo {
      */
     public int aleatorio(int max, int min){
         return (int)Math.floor(Math.random()*(max-min)+min);
+    }
+    
+    public boolean eliminar(char l){
+        for (int i = 0; i < comprobarLetras.size(); i++) {
+            if(l==comprobarLetras.get(i)){
+                comprobarLetras.remove(i);
+                return true;
+            }
+        }
+        return false;
     }
 }

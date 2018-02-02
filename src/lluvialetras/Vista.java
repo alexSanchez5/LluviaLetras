@@ -10,6 +10,7 @@ import java.awt.Menu;
 import java.awt.MenuBar;
 import java.awt.MenuItem;
 import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -28,6 +29,7 @@ public class Vista extends JFrame{
     private Menu nivel;
     private JPanel barraPerder;
     private int velocidadCreacion=500;
+    ArrayList<Letra>arrayletras=new ArrayList();
     
     public Vista(Controlador c){
         this.c=c;
@@ -42,9 +44,13 @@ public class Vista extends JFrame{
     }
     
     public void crearLetra(String let){
-        letra=new Letra(let,this);
-        letra.addKeyListener(c);
-        add(letra);
+        if(!let.equals("1")){
+            letra=new Letra(let,this);
+            letra.addKeyListener(c);
+            arrayletras.add(letra);
+            add(letra);
+        }
+        
     }
     
     /**
@@ -104,5 +110,14 @@ public class Vista extends JFrame{
             barra.mover();
         }
         repaint();
+    }
+    
+    public void eliminar(char l){
+        for (int i = 0; i < arrayletras.size(); i++) {
+            if(arrayletras.get(i).getText().charAt(i)==l){
+                this.remove(arrayletras.get(i));
+                arrayletras.remove(i);
+            }
+        }
     }
 }

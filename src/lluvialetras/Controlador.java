@@ -5,6 +5,7 @@
  */
 package lluvialetras;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -41,11 +42,16 @@ public class Controlador implements KeyListener, ActionListener{
             case 39:
                 v.moverBarra(1);
                 break;
+            default:
+                comprobarLetra(ke.getKeyChar());
+                
         }
+        
     }
 
     @Override
     public void keyReleased(KeyEvent ke) {
+        v.setBackground(Color.white);
     }
 //Action Listener
     @Override
@@ -58,4 +64,16 @@ public class Controlador implements KeyListener, ActionListener{
         v.repaint();
     }
 
+    /**
+     * comprueba si la letraesta en la pantalla he eliminarla
+     * @param letra 
+     */
+    public void comprobarLetra(char letra){
+        if(m.eliminar(letra)){
+            v.eliminar(letra);
+        }else{
+            v.setBackground(Color.red);
+        }
+                
+    }
 }
