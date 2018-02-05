@@ -135,4 +135,8 @@ public class Vista extends JFrame{
             }
         }
     }
+    
+    public void aumentarVelocidad() {
+        new Timer(velocidadCreacion, c).start();
+    }
 }
