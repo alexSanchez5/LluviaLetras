@@ -22,35 +22,42 @@ public class Modelo {
     
     public Modelo(Controlador c){
         this.c=c;
-        InicializarArrays();
+        inicializarArrays();
     }
     
     /**
      * Suma o resta puntos
      * @param correcto
      */
-    public void SumarContador(boolean correcto){
+    public void sumarContador(boolean correcto){
         if(correcto){
             contadorAciertos++;
         }else{
             contadorAciertos--;
         }
+        if(contadorAciertos>10){
+            aumentarNivel();
+            contadorAciertos=0;
+        }
+        System.out.println("Aciertos "+contadorAciertos);
     }
     
     /**
      * Aumenta un nivel
      */
-    public void AumentarNivel(){
+    public void aumentarNivel(){
         nivel++;
         if(nivel>2){
             System.out.println("Nivel aumentado");
         }
+        c.aumentarNivel();
+        System.out.println("Nivel "+nivel);
     }
     
     /**
      * Inicia los arrays con las letras
      */
-    public void InicializarArrays(){
+    public void inicializarArrays(){
         letrasNivelFacil[0]='a';
         letrasNivelFacil[1]='s';
         letrasNivelFacil[2]='d';
@@ -61,7 +68,7 @@ public class Modelo {
         letrasNivelFacil[7]='ñ';
         
         for(int i=0;i<26;i++){
-            letraAscii=i+91;
+            letraAscii=i+97;
             letrasNivelDificil[i]=(char)letraAscii;
         }
         letrasNivelDificil[26]='ñ';
@@ -71,10 +78,10 @@ public class Modelo {
      * Devuelve la letra que va a aparecer
      * @return 
      */
-    public char DarLetra(){
+    public char darLetra(){
         boolean repetido=false;
         char letra;
-        if(nivel<2){
+        if(nivel<3){
             letra= letrasNivelFacil[aleatorio(8,0)];
         }else{
             letra= letrasNivelDificil[aleatorio(27,1)];

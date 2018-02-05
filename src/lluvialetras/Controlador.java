@@ -20,6 +20,7 @@ public class Controlador implements KeyListener, ActionListener{
     
     Vista v=new Vista(this);
     Modelo m=new Modelo(this);
+    boolean perder=false;
     
     
     public Controlador(){
@@ -57,8 +58,10 @@ public class Controlador implements KeyListener, ActionListener{
     @Override
     public void actionPerformed(ActionEvent ae) {
         if(ae.getActionCommand()==null){
-            v.crearLetra(""+m.DarLetra());
-        }else if(ae.getActionCommand().equals("salir")){
+            if(!perder){
+                v.crearLetra(""+m.darLetra());
+            }
+        }else if(ae.getActionCommand().equals("Salir")){
             System.exit(0);
         }
         v.repaint();
@@ -71,9 +74,21 @@ public class Controlador implements KeyListener, ActionListener{
     public void comprobarLetra(char letra){
         if(m.eliminar(letra)){
             v.eliminar(letra);
+            m.sumarContador(true);
         }else{
             v.setBackground(Color.red);
+            m.sumarContador(false);
         }
                 
     }
+
+    public void setPerder(boolean perder) {
+        this.perder = perder;
+    }
+
+    public void aumentarNivel() {
+        v.aumentarVelocidad();
+    }
+    
+    
 }
