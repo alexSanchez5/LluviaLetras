@@ -24,6 +24,7 @@ public class ControladorLetra implements ActionListener{
     public void actionPerformed(ActionEvent ae) {
         l.mover();
         l.actualizar();
+        l.chocar();
     }
    
 }

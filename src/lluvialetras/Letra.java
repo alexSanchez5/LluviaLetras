@@ -36,7 +36,7 @@ public class Letra extends JLabel{
     }
     
     public void chocar(){
-        
+        v.chocar();
     }
     
     public void mover(){
@@ -57,4 +57,13 @@ public class Letra extends JLabel{
     public void actualizar(){
         v.repaint();
     }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+    
 }

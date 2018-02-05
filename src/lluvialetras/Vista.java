@@ -112,9 +112,24 @@ public class Vista extends JFrame{
         repaint();
     }
     
-    public void eliminar(char l){
+    public void eliminar(char le){
         for (int i = 0; i < arrayletras.size(); i++) {
-            if(arrayletras.get(i).getText().charAt(i)==l){
+            if(arrayletras.get(i).getText().charAt(0)==le){
+                this.remove(arrayletras.get(i));
+                arrayletras.remove(i);
+            }
+        }
+    }
+    
+    public void chocar(){
+        boolean choca=false;
+        for (int i = 0; i < arrayletras.size()-1; i++) {
+            if(arrayletras.get(i).getY()==barraPerder.getY())
+                choca=true;
+                //c.setPerder(true);
+        }
+        if(choca){
+            for (int i = 0; i < arrayletras.size()-1; i++) {
                 this.remove(arrayletras.get(i));
                 arrayletras.remove(i);
             }
