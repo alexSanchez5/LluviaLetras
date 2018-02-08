@@ -52,7 +52,7 @@ public class Controlador implements KeyListener, ActionListener{
 
     @Override
     public void keyReleased(KeyEvent ke) {
-        v.setBackground(Color.white);
+        //v.setBackground(Color.white);
     }
 //Action Listener
     @Override

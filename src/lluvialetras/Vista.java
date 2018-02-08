@@ -91,6 +91,7 @@ public class Vista extends JFrame{
         add(barraPerder);
         this.addKeyListener(c);
         //general
+        this.setBackground(Color.yellow);
         this.setBounds(100, 100, 400, 600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
@@ -124,15 +125,21 @@ public class Vista extends JFrame{
     public void chocar(){
         boolean choca=false;
         for (int i = 0; i < arrayletras.size()-1; i++) {
-            if(arrayletras.get(i).getY()==barraPerder.getY())
-                choca=true;
-                //c.setPerder(true);
+            if(arrayletras.get(i).getBounds().intersects(barraPerder.getBounds()) || arrayletras.get(i).getY()<0){
+                if(arrayletras.get(i).getBounds().intersects(barra.getBounds())){
+                    arrayletras.get(i).setBajar(false);
+                }else {
+                    choca=true;
+                    c.setPerder(true);
+                }
+                
+            }
         }
         if(choca){
-            for (int i = 0; i < arrayletras.size()-1; i++) {
+            for (int i = 0; i < arrayletras.size(); i++) {
                 this.remove(arrayletras.get(i));
-                arrayletras.remove(i);
             }
+            arrayletras.clear();
         }
     }
     

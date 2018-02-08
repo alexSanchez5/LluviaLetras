@@ -40,7 +40,6 @@ public class Letra extends JLabel{
     }
     
     public void mover(){
-        System.out.println(x+"-"+y);
         if(bajar){
             y=y+5;
         }else{
@@ -65,5 +64,11 @@ public class Letra extends JLabel{
     public int getY() {
         return y;
     }
+
+    public void setBajar(boolean bajar) {
+        this.bajar = bajar;
+    }
+    
+    
     
 }
