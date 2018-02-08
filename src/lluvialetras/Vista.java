@@ -29,7 +29,7 @@ public class Vista extends JFrame{
     private Menu archivo;
     private Menu nivel;
     private JPanel barraPerder;
-    private JLabel gameover;
+    private JLabel gameover,puntuacion,nivelPant;
     private int velocidadCreacion=500;
     private Timer timer;
     ArrayList<Letra>arrayletras=new ArrayList();
@@ -90,11 +90,21 @@ public class Vista extends JFrame{
         crearBarra();
         crearMenu();
         barraPerder=new JPanel();
-        barraPerder.setBounds(0, 500, 400, 20);
+        barraPerder.setBounds(0, 480, 400, 20);
         barraPerder.setBackground(Color.yellow);
         add(barraPerder);
         this.addKeyListener(c);
+        //creo el label de puntuacion y el nivel en el que esta
+        puntuacion=new JLabel("Puntuacion: ");
+        puntuacion.setFont(puntuacion.getFont().deriveFont(25.0f));
+        puntuacion.setBounds(10, 495, 200, 50);
+        add(puntuacion);
+        nivelPant=new JLabel("Nivel 1");
+        nivelPant.setBounds(300, 0, 100, 50);
+        nivelPant.setFont(nivelPant.getFont().deriveFont(20.0f));
+        add(nivelPant);
         //general
+        this.setBackground(Color.CYAN);
         this.setBounds(100, 100, 400, 600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
@@ -144,12 +154,26 @@ public class Vista extends JFrame{
     }
     
     public void gameOver(){
-        gameover=new JLabel("HAS PERRDIDO JODIDO RETRASADO MENTAL");
+        gameover=new JLabel("HAS PERDIDO, SIGUE PRACTICANDO");
         gameover.setBounds(50, 250, 300, 50);
         add(gameover);
     }
     
     public void aumentarVelocidad() {
         new Timer(velocidadCreacion, c).start();
+    }
+    /**
+     * modifica la puntuacion que va haciendo el jugador
+     * @param n - la puntuacion que recoge del controlador
+     */
+    public void modificarPuntuacion(int n){
+        puntuacion.setText("Puntuacion: "+n);
+    }
+    /**
+     * modifica el nivel en el que se encuentra el jugador
+     * @param n - el nivel que recoge del controlador
+     */
+    public void modificarNivel(int n){
+        nivelPant.setText("Nivel "+n);
     }
 }

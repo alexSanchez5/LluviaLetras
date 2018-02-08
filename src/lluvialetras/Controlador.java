@@ -79,7 +79,7 @@ public class Controlador implements KeyListener, ActionListener{
             v.setBackground(Color.red);
             m.sumarContador(false);
         }
-                
+        mandarPuntuacion();       
     }
 
     public void setPerder(boolean perder) {
@@ -88,7 +88,14 @@ public class Controlador implements KeyListener, ActionListener{
 
     public void aumentarNivel() {
         v.aumentarVelocidad();
+        mandarNivel();
     }
     
+    public void mandarPuntuacion(){
+        v.modificarPuntuacion(m.getContadorAciertos());
+    }
     
+    public void mandarNivel(){
+        v.modificarNivel(m.getNivel());
+    }
 }

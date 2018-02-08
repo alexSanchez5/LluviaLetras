@@ -14,7 +14,7 @@ import javax.swing.JPanel;
  */
 public class Barra extends JPanel{
     
-    private int x=200,y=500;
+    private int x=200,y=480;
     private final int ANCHO=70,ALTO=20;
     private int direccion;
     private final int PARADO=0;
