@@ -58,17 +58,17 @@ public class Modelo {
      * Inicia los arrays con las letras
      */
     public void inicializarArrays(){
-        letrasNivelFacil[0]='a';
-        letrasNivelFacil[1]='s';
-        letrasNivelFacil[2]='d';
-        letrasNivelFacil[3]='f';
-        letrasNivelFacil[4]='j';
-        letrasNivelFacil[5]='k';
-        letrasNivelFacil[6]='l';
-        letrasNivelFacil[7]='ñ';
+        letrasNivelFacil[0]='A';
+        letrasNivelFacil[1]='S';
+        letrasNivelFacil[2]='D';
+        letrasNivelFacil[3]='F';
+        letrasNivelFacil[4]='J';
+        letrasNivelFacil[5]='K';
+        letrasNivelFacil[6]='L';
+        letrasNivelFacil[7]='Ñ';
         
         for(int i=0;i<26;i++){
-            letraAscii=i+97;
+            letraAscii=i+65;
             letrasNivelDificil[i]=(char)letraAscii;
         }
         letrasNivelDificil[26]='ñ';
@@ -117,4 +117,13 @@ public class Modelo {
         }
         return false;
     }
+
+    public int getContadorAciertos() {
+        return contadorAciertos;
+    }
+
+    public int getNivel() {
+        return nivel;
+    }
+    
 }

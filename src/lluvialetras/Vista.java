@@ -12,6 +12,7 @@ import java.awt.MenuItem;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -28,14 +29,17 @@ public class Vista extends JFrame{
     private Menu archivo;
     private Menu nivel;
     private JPanel barraPerder;
+    private JLabel gameover,puntuacion,nivelPant;
     private int velocidadCreacion=500;
+    private Timer timer;
     ArrayList<Letra>arrayletras=new ArrayList();
     
     public Vista(Controlador c){
         this.c=c;
         crearVentana();
         //crear Timer
-        new Timer(velocidadCreacion, c).start();
+        timer=new Timer(velocidadCreacion, c);
+        timer.start();
     }
     
     public void crearBarra(){
@@ -86,12 +90,20 @@ public class Vista extends JFrame{
         crearBarra();
         crearMenu();
         barraPerder=new JPanel();
-        barraPerder.setBounds(0, 500, 400, 20);
+        barraPerder.setBounds(0, 480, 400, 20);
         barraPerder.setBackground(Color.yellow);
         add(barraPerder);
         this.addKeyListener(c);
-        //general
-        this.setBackground(Color.yellow);
+        //creo el label de puntuacion y el nivel en el que esta
+        puntuacion=new JLabel("Puntuacion: ");
+        puntuacion.setFont(puntuacion.getFont().deriveFont(25.0f));
+        puntuacion.setBounds(10, 495, 200, 50);
+        add(puntuacion);
+        nivelPant=new JLabel("Nivel 1");
+        nivelPant.setBounds(300, 0, 100, 50);
+        nivelPant.setFont(nivelPant.getFont().deriveFont(20.0f));
+        add(nivelPant);
+        this.getContentPane().setBackground(Color.CYAN);
         this.setBounds(100, 100, 400, 600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
@@ -133,6 +145,7 @@ public class Vista extends JFrame{
                     c.setPerder(true);
                 }
                 
+
             }
         }
         if(choca){
@@ -140,10 +153,31 @@ public class Vista extends JFrame{
                 this.remove(arrayletras.get(i));
             }
             arrayletras.clear();
+            gameOver();
         }
+    }
+    
+    public void gameOver(){
+        gameover=new JLabel("HAS PERDIDO, SIGUE PRACTICANDO");
+        gameover.setBounds(50, 250, 300, 50);
+        add(gameover);
     }
     
     public void aumentarVelocidad() {
         new Timer(velocidadCreacion, c).start();
+    }
+    /**
+     * modifica la puntuacion que va haciendo el jugador
+     * @param n - la puntuacion que recoge del controlador
+     */
+    public void modificarPuntuacion(int n){
+        puntuacion.setText("Puntuacion: "+n);
+    }
+    /**
+     * modifica el nivel en el que se encuentra el jugador
+     * @param n - el nivel que recoge del controlador
+     */
+    public void modificarNivel(int n){
+        nivelPant.setText("Nivel "+n);
     }
 }

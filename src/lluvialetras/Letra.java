@@ -25,7 +25,7 @@ public class Letra extends JLabel{
         this.v=v;
         setText(let);
         setBackground(Color.blue);
-        x=aleatorio(400,5);
+        x=aleatorio(380,5);
         setBounds(x,y,20,20);
         c=new ControladorLetra(this);
         new Timer(velocidad, c).start();
