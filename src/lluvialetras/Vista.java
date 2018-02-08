@@ -104,7 +104,7 @@ public class Vista extends JFrame{
         nivelPant.setFont(nivelPant.getFont().deriveFont(20.0f));
         add(nivelPant);
         //general
-        this.setBackground(Color.CYAN);
+        this.getContentPane().setBackground(Color.CYAN);
         this.setBounds(100, 100, 400, 600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);

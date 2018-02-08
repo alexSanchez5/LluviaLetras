@@ -23,7 +23,7 @@ public class Barra extends JPanel{
 
     public Barra() {
         setBounds(x,y,ANCHO,ALTO);
-        setBackground(Color.red);
+        setBackground(Color.CYAN);
     }
     
     /**

@@ -52,7 +52,7 @@ public class Controlador implements KeyListener, ActionListener{
 
     @Override
     public void keyReleased(KeyEvent ke) {
-        v.setBackground(Color.white);
+        v.getContentPane().setBackground(Color.CYAN);
     }
 //Action Listener
     @Override
@@ -76,7 +76,7 @@ public class Controlador implements KeyListener, ActionListener{
             v.eliminar(letra);
             m.sumarContador(true);
         }else{
-            v.setBackground(Color.red);
+            v.getContentPane().setBackground(Color.red);
             m.sumarContador(false);
         }
         mandarPuntuacion();       
