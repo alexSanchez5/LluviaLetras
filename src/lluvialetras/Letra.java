@@ -40,7 +40,6 @@ public class Letra extends JLabel{
     }
     
     public void mover(){
-        System.out.println(x+"-"+y);
         if(bajar){
             y=y+5;
         }else{

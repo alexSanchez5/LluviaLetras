@@ -12,6 +12,7 @@ import java.awt.MenuItem;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -28,14 +29,17 @@ public class Vista extends JFrame{
     private Menu archivo;
     private Menu nivel;
     private JPanel barraPerder;
+    private JLabel gameover;
     private int velocidadCreacion=500;
+    private Timer timer;
     ArrayList<Letra>arrayletras=new ArrayList();
     
     public Vista(Controlador c){
         this.c=c;
         crearVentana();
         //crear Timer
-        new Timer(velocidadCreacion, c).start();
+        timer=new Timer(velocidadCreacion, c);
+        timer.start();
     }
     
     public void crearBarra(){
@@ -124,16 +128,25 @@ public class Vista extends JFrame{
     public void chocar(){
         boolean choca=false;
         for (int i = 0; i < arrayletras.size()-1; i++) {
-            if(arrayletras.get(i).getY()==barraPerder.getY())
+            if(arrayletras.get(i).getY()==barraPerder.getY()){
                 choca=true;
-                //c.setPerder(true);
-        }
-        if(choca){
-            for (int i = 0; i < arrayletras.size()-1; i++) {
-                this.remove(arrayletras.get(i));
-                arrayletras.remove(i);
+                c.setPerder(true);
+                timer.stop();
             }
         }
+        if(choca){
+            for (int i = 0; i < arrayletras.size(); i++) {
+                this.remove(arrayletras.get(i));
+            }
+            arrayletras.clear();
+            gameOver();
+        }
+    }
+    
+    public void gameOver(){
+        gameover=new JLabel("HAS PERRDIDO JODIDO RETRASADO MENTAL");
+        gameover.setBounds(50, 250, 300, 50);
+        add(gameover);
     }
     
     public void aumentarVelocidad() {
