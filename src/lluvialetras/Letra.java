@@ -64,5 +64,11 @@ public class Letra extends JLabel{
     public int getY() {
         return y;
     }
+
+    public void setBajar(boolean bajar) {
+        this.bajar = bajar;
+    }
+    
+    
     
 }

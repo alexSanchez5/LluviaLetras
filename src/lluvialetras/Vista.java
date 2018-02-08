@@ -103,7 +103,6 @@ public class Vista extends JFrame{
         nivelPant.setBounds(300, 0, 100, 50);
         nivelPant.setFont(nivelPant.getFont().deriveFont(20.0f));
         add(nivelPant);
-        //general
         this.getContentPane().setBackground(Color.CYAN);
         this.setBounds(100, 100, 400, 600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -138,10 +137,15 @@ public class Vista extends JFrame{
     public void chocar(){
         boolean choca=false;
         for (int i = 0; i < arrayletras.size()-1; i++) {
-            if(arrayletras.get(i).getY()==barraPerder.getY()){
-                choca=true;
-                c.setPerder(true);
-                timer.stop();
+            if(arrayletras.get(i).getBounds().intersects(barraPerder.getBounds()) || arrayletras.get(i).getY()<0){
+                if(arrayletras.get(i).getBounds().intersects(barra.getBounds())){
+                    arrayletras.get(i).setBajar(false);
+                }else {
+                    choca=true;
+                    c.setPerder(true);
+                }
+                
+
             }
         }
         if(choca){
