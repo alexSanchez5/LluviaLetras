@@ -71,7 +71,7 @@ public class Modelo {
             letraAscii=i+65;
             letrasNivelDificil[i]=(char)letraAscii;
         }
-        letrasNivelDificil[26]='ñ';
+        letrasNivelDificil[26]='Ñ';
     }
     
     /**

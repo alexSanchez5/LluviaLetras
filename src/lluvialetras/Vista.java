@@ -51,6 +51,7 @@ public class Vista extends JFrame{
         if(!let.equals("1")){
             letra=new Letra(let,this);
             letra.addKeyListener(c);
+            letra.setFont(new java.awt.Font("Tahoma", 0, 20));
             arrayletras.add(letra);
             add(letra);
         }
