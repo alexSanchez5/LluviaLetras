@@ -121,6 +121,7 @@ public class Controlador implements KeyListener, ActionListener{
      * @param letra 
      */
     public void comprobarLetra(char letra){
+        letra=java.lang.Character.toUpperCase(letra);
         if(!perder){
             if(m.eliminar(letra)){
                 v.eliminar(letra);
