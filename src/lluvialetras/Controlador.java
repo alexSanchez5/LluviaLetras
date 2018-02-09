@@ -63,6 +63,55 @@ public class Controlador implements KeyListener, ActionListener{
             }
         }else if(ae.getActionCommand().equals("Salir")){
             System.exit(0);
+        }else{
+            switch (ae.getActionCommand()) {
+                case "Nivel 1":
+                    v.cambiarNivel(1);
+                    m.setNivel(1);
+                    break;
+
+                case "Nivel 2":
+                    v.cambiarNivel(2);
+                    m.setNivel(2);
+                    break;
+
+                case "Nivel 3":
+                    v.cambiarNivel(3);
+                    m.setNivel(3);
+                    break;
+
+                case "Nivel 4":
+                    v.cambiarNivel(4);
+                    m.setNivel(4);
+                    break;
+
+                case "Nivel 5":
+                    v.cambiarNivel(5);
+                    m.setNivel(5);
+                    break;
+                    
+                    case "Nivel 6":
+                    v.cambiarNivel(6);
+                    m.setNivel(6);
+                    break;
+                    
+                    case "Nivel 7":
+                    v.cambiarNivel(7);
+                    m.setNivel(7);
+                    break;
+                    
+                    case "Nivel 8":
+                    v.cambiarNivel(8);
+                    m.setNivel(8);
+                    break;
+                    
+                    case "Nivel 9":
+                    v.cambiarNivel(9);
+                    m.setNivel(9);
+                    break;
+
+            }
+            mandarNivel();
         }
         v.repaint();
     }
@@ -72,12 +121,14 @@ public class Controlador implements KeyListener, ActionListener{
      * @param letra 
      */
     public void comprobarLetra(char letra){
-        if(m.eliminar(letra)){
-            v.eliminar(letra);
-            m.sumarContador(true);
-        }else{
-            v.getContentPane().setBackground(Color.red);
-            m.sumarContador(false);
+        if(!perder){
+            if(m.eliminar(letra)){
+                v.eliminar(letra);
+                m.sumarContador(true);
+            }else{
+                v.getContentPane().setBackground(Color.red);
+                m.sumarContador(false);
+            }
         }
         mandarPuntuacion();       
     }

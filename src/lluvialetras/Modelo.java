@@ -39,7 +39,6 @@ public class Modelo {
             aumentarNivel();
             contadorAciertos=0;
         }
-        System.out.println("Aciertos "+contadorAciertos);
     }
     
     /**
@@ -125,5 +124,10 @@ public class Modelo {
     public int getNivel() {
         return nivel;
     }
+
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
+    }
+    
     
 }

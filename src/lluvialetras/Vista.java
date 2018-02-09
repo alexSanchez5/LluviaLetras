@@ -10,6 +10,7 @@ import java.awt.Menu;
 import java.awt.MenuBar;
 import java.awt.MenuItem;
 import java.awt.Color;
+import java.awt.MenuShortcut;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -33,13 +34,19 @@ public class Vista extends JFrame{
     private int velocidadCreacion=500;
     private Timer timer;
     ArrayList<Letra>arrayletras=new ArrayList();
+    ArrayList<Timer> arrayTimers=new ArrayList();
     
     public Vista(Controlador c){
         this.c=c;
+        jugar();
+    }
+    
+    public void jugar(){
         crearVentana();
         //crear Timer
         timer=new Timer(velocidadCreacion, c);
         timer.start();
+        arrayTimers.add(timer);
     }
     
     public void crearBarra(){
@@ -71,13 +78,18 @@ public class Vista extends JFrame{
         MenuItem cargar=new MenuItem("Cargar");
         cargar.addActionListener(c);
         archivo.add(cargar);
+        MenuItem reiniciar=new MenuItem("Reiniciar");
+        reiniciar.addActionListener(c);
+        archivo.add(reiniciar);
         MenuItem salir=new MenuItem("Salir");
         salir.addActionListener(c);
         archivo.add(salir);
        
         nivel=new Menu("Nivel");
-        for (int i = 1; i < 6; i++) {
+        for (int i = 1; i < 10; i++) {
             MenuItem nNivel=new MenuItem("Nivel "+i);
+            nNivel.setShortcut(new MenuShortcut(48+i,false));
+            nNivel.addActionListener(c);
             nivel.add(nNivel);
         }
         
@@ -91,21 +103,21 @@ public class Vista extends JFrame{
         crearBarra();
         crearMenu();
         barraPerder=new JPanel();
-        barraPerder.setBounds(0, 480, 400, 20);
+        barraPerder.setBounds(0, 580, 400, 20);
         barraPerder.setBackground(Color.yellow);
         add(barraPerder);
         this.addKeyListener(c);
         //creo el label de puntuacion y el nivel en el que esta
         puntuacion=new JLabel("Puntuacion: ");
         puntuacion.setFont(puntuacion.getFont().deriveFont(25.0f));
-        puntuacion.setBounds(10, 495, 200, 50);
+        puntuacion.setBounds(10, 600, 200, 50);
         add(puntuacion);
         nivelPant=new JLabel("Nivel 1");
         nivelPant.setBounds(300, 0, 100, 50);
         nivelPant.setFont(nivelPant.getFont().deriveFont(20.0f));
         add(nivelPant);
         this.getContentPane().setBackground(Color.CYAN);
-        this.setBounds(100, 100, 400, 600);
+        this.setBounds(100, 0, 400, 700);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
@@ -165,7 +177,9 @@ public class Vista extends JFrame{
     }
     
     public void aumentarVelocidad() {
-        new Timer(velocidadCreacion, c).start();
+        Timer timer=new Timer(velocidadCreacion, c);
+        timer.start();
+        arrayTimers.add(timer);
     }
     /**
      * modifica la puntuacion que va haciendo el jugador
@@ -180,5 +194,17 @@ public class Vista extends JFrame{
      */
     public void modificarNivel(int n){
         nivelPant.setText("Nivel "+n);
+    }
+    
+    public void cambiarNivel(int nivel){
+        for (int i = 0; i < arrayTimers.size(); i++) {
+            arrayTimers.get(i).stop();
+        }
+        arrayTimers.clear();
+        for (int i = 0; i < nivel; i++) {
+            Timer timer=new Timer(velocidadCreacion, c);
+            timer.start();
+            arrayTimers.add(timer);
+        }
     }
 }

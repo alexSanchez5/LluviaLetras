@@ -14,7 +14,7 @@ import javax.swing.JPanel;
  */
 public class Barra extends JPanel{
     
-    private int x=200,y=480;
+    private int x=200,y=580;
     private final int ANCHO=70,ALTO=20;
     private int direccion;
     private final int PARADO=0;
@@ -23,7 +23,7 @@ public class Barra extends JPanel{
 
     public Barra() {
         setBounds(x,y,ANCHO,ALTO);
-        setBackground(Color.CYAN);
+        setBackground(Color.GREEN);
     }
     
     /**
