@@ -74,7 +74,7 @@ public class Modelo {
     }
     
     /**
-     * Devuelve la letra que va a aparecer
+     * Devuelve la letra que va a aparecer dependiendo del nivel
      * @return 
      */
     public char darLetra(){
@@ -98,15 +98,19 @@ public class Modelo {
         }
     }
     /**
-     * Genera un numero aleatorio
-     * @param max
-     * @param min
-     * @return 
+     * Genera un numero aleatorio entre un maximo y un minimo
+     * @param max - es el numero maximo aleatorio
+     * @param min - es el numero minimo aleatorio
+     * @return - retorna el numero aleatorio que ha generado
      */
     public int aleatorio(int max, int min){
         return (int)Math.floor(Math.random()*(max-min)+min);
     }
-    
+    /**
+     * este metodo comprueba que la letra que has pulsado este en la pantalla y la elimina del array que guarda las que estan en pantalla
+     * @param l - es la letra que ha pulsado
+     * @return - retoorna verdadero o falso dependiendo si ha podido encontrar la letra en el array o no.
+     */
     public boolean eliminar(char l){
         for (int i = 0; i < comprobarLetras.size(); i++) {
             if(l==comprobarLetras.get(i)){
