@@ -71,7 +71,6 @@ public class Vista extends JFrame{
             arrayletras.add(letra);
             add(letra);
         }
-        
     }
     
     /**
@@ -196,8 +195,9 @@ public class Vista extends JFrame{
      * Crea el texto que aparece cuando pierdes
      */
     public void gameOver(){
-        gameover=new JLabel("HAS PERDIDO, SIGUE PRACTICANDO");
-        gameover.setBounds(50, 250, 300, 50);
+        gameover=new JLabel("HAS PERDIDO SIGUE PRACTICANDO");
+        gameover.setFont(new java.awt.Font("Tahoma", 0, 15));
+        gameover.setBounds(75, 250, 300, 50);
         add(gameover);
     }
     

@@ -46,11 +46,7 @@ public class Modelo {
      */
     public void aumentarNivel(){
         nivel++;
-        if(nivel>2){
-            System.out.println("Nivel aumentado");
-        }
         c.aumentarNivel();
-        System.out.println("Nivel "+nivel);
     }
     
     /**
