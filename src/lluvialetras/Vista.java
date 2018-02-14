@@ -87,9 +87,6 @@ public class Vista extends JFrame{
         MenuItem cargar=new MenuItem("Cargar");
         cargar.addActionListener(c);
         archivo.add(cargar);
-        MenuItem reiniciar=new MenuItem("Reiniciar");
-        reiniciar.addActionListener(c);
-        archivo.add(reiniciar);
         MenuItem salir=new MenuItem("Salir");
         salir.addActionListener(c);
         archivo.add(salir);
