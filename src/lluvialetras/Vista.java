@@ -40,7 +40,9 @@ public class Vista extends JFrame{
         this.c=c;
         jugar();
     }
-    
+    /**
+     * Empieza el juego
+     */
     public void jugar(){
         crearVentana();
         //crear Timer
@@ -49,11 +51,18 @@ public class Vista extends JFrame{
         arrayTimers.add(timer);
     }
     
+    /**
+     * Crea la barra en la que rebotan las letras
+     */
     public void crearBarra(){
         barra=new Barra();
         add(barra);
     }
     
+    /**
+     * Si el parámetro es distinto de uno, se crea la letra que se le mande y se añade al array
+     * @param let - La letra que haya que crear. Si es igual a 1 no se hace nada
+     */
     public void crearLetra(String let){
         if(!let.equals("1")){
             letra=new Letra(let,this);
@@ -98,6 +107,9 @@ public class Vista extends JFrame{
         this.setMenuBar(menu);
     }
     
+    /**
+     * Crea la ventana
+     */
     public void crearVentana(){
         setLayout(null);
         crearBarra();
@@ -122,6 +134,10 @@ public class Vista extends JFrame{
         this.setVisible(true);
     }
     
+    /**
+     * Cambia la direccion y la posicion de la barra en función del número que le mandes
+     * @param d - la dirección en la que se va a mover
+     */
     public void moverBarra(int d){
         if(barra.getX()<10){
             barra.setDireccion(0);
@@ -138,6 +154,10 @@ public class Vista extends JFrame{
         repaint();
     }
     
+    /**
+     * Elimina la letra que le mandes de la pantalla y del arraylist de letras
+     * @param le - la letra que se va a eliminar
+     */
     public void eliminar(char le){
         for (int i = 0; i < arrayletras.size(); i++) {
             if(arrayletras.get(i).getText().charAt(0)==le){
@@ -147,6 +167,11 @@ public class Vista extends JFrame{
         }
     }
     
+    /**
+     * Primero comprueba si choca con la barra de abajo, y después si choca con la barra pequeña. Si 
+     * choca con la barra pequeña, se cambia la dirección de movimiento de la letra. Si no, pierde y se 
+     * limpia la pantalla
+     */
     public void chocar(){
         boolean choca=false;
         for (int i = 0; i < arrayletras.size()-1; i++) {
@@ -170,12 +195,18 @@ public class Vista extends JFrame{
         }
     }
     
+    /**
+     * Crea el texto que aparece cuando pierdes
+     */
     public void gameOver(){
         gameover=new JLabel("HAS PERDIDO, SIGUE PRACTICANDO");
         gameover.setBounds(50, 250, 300, 50);
         add(gameover);
     }
     
+    /**
+     * Crea un nuevo timer para aumentar la velocidad de creación de las letras
+     */
     public void aumentarVelocidad() {
         Timer timer=new Timer(velocidadCreacion, c);
         timer.start();
@@ -196,6 +227,10 @@ public class Vista extends JFrame{
         nivelPant.setText("Nivel "+n);
     }
     
+    /**
+     * Elimina todos los timers de generación de letras que haya y crea tantos como se le pase por parámetro
+     * @param nivel - el numero de timers que se va a generar
+     */
     public void cambiarNivel(int nivel){
         for (int i = 0; i < arrayTimers.size(); i++) {
             arrayTimers.get(i).stop();

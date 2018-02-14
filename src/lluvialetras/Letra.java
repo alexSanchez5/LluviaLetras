@@ -21,24 +21,40 @@ public class Letra extends JLabel{
     ControladorLetra c;
     private Vista v;
 
+    /**
+     * Crea la letra con los parámetros que se le manden
+     * @param let - La letra que va a ser
+     * @param v - La vista en la que se genera
+     */
     public Letra(String let,Vista v) {
         this.v=v;
         setText(let);
-        setBackground(Color.blue);
         x=aleatorio(380,5);
         setBounds(x,y,30,30);
         c=new ControladorLetra(this);
         new Timer(velocidad, c).start();
     }
     
+    /**
+     * Retorna un número aleatorio que se encuentre entre los dos parámetros
+     * @param max - El máximo 
+     * @param min - El mínimo
+     * @return 
+     */
     public int aleatorio(int max, int min){
         return (int)Math.floor(Math.random()*(max-min)+min);
     }
     
+    /**
+     * Llama a l método chocar de la vista
+     */
     public void chocar(){
         v.chocar();
     }
     
+    /**
+     * Mueve la letra en la direccion que le corresponda y actualiza la vista
+     */
     public void mover(){
         if(bajar){
             y=y+5;
@@ -48,11 +64,10 @@ public class Letra extends JLabel{
         setBounds(x,y,20,20);
         actualizar();
     }
-
-    public int getVelocidad() {
-        return velocidad;
-    }
     
+    /** 
+     * Actualiza la vista
+     */
     public void actualizar(){
         v.repaint();
     }
@@ -67,6 +82,10 @@ public class Letra extends JLabel{
 
     public void setBajar(boolean bajar) {
         this.bajar = bajar;
+    }
+    
+    public int getVelocidad() {
+        return velocidad;
     }
     
     
