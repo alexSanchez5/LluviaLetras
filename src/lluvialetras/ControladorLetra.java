@@ -20,6 +20,10 @@ public class ControladorLetra implements ActionListener{
         this.l=l;
     }
 
+    /**
+     * Mueve la letra, actualiza la vista y comprueba si se ha chocado
+     * @param ae 
+     */
     @Override
     public void actionPerformed(ActionEvent ae) {
         l.mover();
