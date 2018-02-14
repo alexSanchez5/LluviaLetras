@@ -145,9 +145,9 @@ public class Controlador implements KeyListener, ActionListener{
     public void setPerder(boolean perder) {
         this.perder = perder;
     }
-/**
- * este metodo como su propio nombre indica aumenta el nivel de juego en el modelo
- */
+    /**
+     * este metodo como su propio nombre indica aumenta el nivel de juego en el modelo
+     */
     public void aumentarNivel() {
         v.aumentarVelocidad();
         mandarNivel();

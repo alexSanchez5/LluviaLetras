@@ -41,7 +41,7 @@ public class Vista extends JFrame{
         jugar();
     }
     /**
-     * Empieza el juego
+     * Empieza el juego, crea la ventana de juego, y el timer que va creando letras aleatorias
      */
     public void jugar(){
         crearVentana();
@@ -75,7 +75,7 @@ public class Vista extends JFrame{
     }
     
     /**
-     * Crea el menu
+     * Crea el menu, con todas sus opciones y sus aceleradores
      */
     public void crearMenu(){
         menu=new MenuBar();

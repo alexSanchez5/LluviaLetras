@@ -41,7 +41,7 @@ public class Barra extends JPanel{
     
     /**
      * Cambiar la direccion
-     * @param dir 
+     * @param dir - direccion a la que cambia
      */
     public void setDireccion(int dir){
         direccion=dir;
