@@ -22,15 +22,14 @@ public class Controlador implements KeyListener, ActionListener{
     Modelo m=new Modelo(this);
     boolean perder=false;
     
-    
-    public Controlador(){
-        
-    }
-//keyListener
     @Override
     public void keyTyped(KeyEvent ke) {
     }
-
+/**
+ * este metodo genera un evento cuando presionas una tecla, y nos servira para saber que tecla esta pulsando y comprobar, si
+ * es una flecha para mover la barra o es una letra para comprobar.
+ * @param ke  - es el evento generado.
+ */
     @Override
     public void keyPressed(KeyEvent ke) {
         switch(ke.getKeyCode()){
@@ -49,12 +48,20 @@ public class Controlador implements KeyListener, ActionListener{
         }
         
     }
-
+/**
+ * este metodo sirve para que cuando suelte una tecla fallida el color de la pantalla vuelva a ser el mismo,
+ * y no se quede en rojo por fallida.
+ * @param ke - evento que genera al soltar la tecla
+ */
     @Override
     public void keyReleased(KeyEvent ke) {
         v.getContentPane().setBackground(Color.CYAN);
     }
-//Action Listener
+/**
+ * este metodo ejecuta un evento o accion, comprueba si la ha generado algun boton como puede ser el salir,
+ * o cualquiera de los niveles, o por el contrario se ha ejecutado automaticamente (null).
+ * @param ae - es el evento generado.
+ */
     @Override
     public void actionPerformed(ActionEvent ae) {
         if(ae.getActionCommand()==null){
@@ -117,8 +124,9 @@ public class Controlador implements KeyListener, ActionListener{
     }
 
     /**
-     * comprueba si la letraesta en la pantalla he eliminarla
-     * @param letra 
+     * este metodo manda al modelo que compruebe si esta la letra a eliminar y si es asi la elimina tambien de la pantalla, 
+     * ademas modifica la puntuacion y modifica el color de la pantalla.
+     * @param letra - es la letra pulsada por el usuario
      */
     public void comprobarLetra(char letra){
         letra=java.lang.Character.toUpperCase(letra);
@@ -137,16 +145,22 @@ public class Controlador implements KeyListener, ActionListener{
     public void setPerder(boolean perder) {
         this.perder = perder;
     }
-
+/**
+ * este metodo como su propio nombre indica aumenta el nivel de juego en el modelo
+ */
     public void aumentarNivel() {
         v.aumentarVelocidad();
         mandarNivel();
     }
-    
+    /**
+     * este metodo modifica la puntuacion del usuario
+     */
     public void mandarPuntuacion(){
         v.modificarPuntuacion(m.getContadorAciertos());
     }
-    
+    /**
+     * este metodo cambia el nivel de la pantalla para que el usuario lo vea
+     */
     public void mandarNivel(){
         v.modificarNivel(m.getNivel());
     }
