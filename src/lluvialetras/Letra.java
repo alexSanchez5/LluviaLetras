@@ -5,6 +5,7 @@
  */
 package lluvialetras;
 
+import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 
@@ -19,6 +20,7 @@ public class Letra extends JLabel{
     private final int VEL3=50;
     private final int VEL4=40;
     private final int VEL5=30;
+    private int contadorPulsado;
     private int x,y=0;
     private int nivel=1;
     private boolean bajar=true;
@@ -36,6 +38,8 @@ public class Letra extends JLabel{
         x=aleatorio(370,5);
         setBounds(x,y,30,30);
         c=new ControladorLetra(this);
+        contadorPulsado=aleatorio(4,1);
+        v.ponerColor(contadorPulsado,this);
         crearTimer();
     }
     
@@ -98,7 +102,7 @@ public class Letra extends JLabel{
     public void actualizar(){
         v.repaint();
     }
-
+    
     public int getX() {
         return x;
     }
@@ -113,6 +117,14 @@ public class Letra extends JLabel{
 
     public void setNivel(int nivel) {
         this.nivel = nivel;
+    }
+
+    public int getContadorPulsado() {
+        return contadorPulsado;
+    }
+
+    public void setContadorPulsado(int contadorPulsado) {
+        this.contadorPulsado = contadorPulsado;
     }
     
 }

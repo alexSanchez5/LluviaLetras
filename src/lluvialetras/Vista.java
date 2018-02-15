@@ -178,8 +178,6 @@ public class Vista extends JFrame{
                     choca=true;
                     c.setPerder(true);
                 }
-                
-
             }
         }
         if(choca){
@@ -239,5 +237,39 @@ public class Vista extends JFrame{
             timer.start();
             arrayTimers.add(timer);
         }
+    }
+    /**
+     * este metodo cambia las veces que le faltan por pulsar a la tecla.
+     */
+    public void modificarCont(char le){
+        for (int i = 0; i < arrayletras.size(); i++) {
+            if(arrayletras.get(i).getText().charAt(0)==le){
+                letra.setContadorPulsado(letra.getContadorPulsado()-1);
+                ponerColor(letra.getContadorPulsado(),letra);
+            }
+        }
+    }
+    /**
+     * @return - retorna el contador de veces pulsadas que le faltan a la tecla
+     */
+    public int darCont(){
+        return letra.getContadorPulsado();
+    }
+    /**
+     * pinta la letra del color que le corresponde
+     */
+    public void ponerColor(int n, Letra l){
+        switch(n){
+            case 1:
+                l.setForeground(Color.green);
+                break;
+            case 2:
+                l.setForeground(Color.red);
+                break;
+            case 3:
+                l.setForeground(Color.black);
+                break;
+        }
+        repaint();
     }
 }

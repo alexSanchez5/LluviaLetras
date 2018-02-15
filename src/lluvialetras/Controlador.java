@@ -46,7 +46,6 @@ public class Controlador implements KeyListener, ActionListener{
                 comprobarLetra(ke.getKeyChar());
                 
         }
-        
     }
 /**
  * este metodo sirve para que cuando suelte una tecla fallida el color de la pantalla vuelva a ser el mismo,
@@ -131,12 +130,16 @@ public class Controlador implements KeyListener, ActionListener{
     public void comprobarLetra(char letra){
         letra=java.lang.Character.toUpperCase(letra);
         if(!perder){
-            if(m.eliminar(letra)){
-                v.eliminar(letra);
-                m.sumarContador(true);
+            if(v.darCont()==1){
+                if(m.eliminar(letra)){
+                    v.eliminar(letra);
+                    m.sumarContador(true);
+                }else{
+                    v.getContentPane().setBackground(Color.red);
+                    m.sumarContador(false);
+                }
             }else{
-                v.getContentPane().setBackground(Color.red);
-                m.sumarContador(false);
+                v.modificarCont(letra);
             }
         }
         mandarPuntuacion();       
