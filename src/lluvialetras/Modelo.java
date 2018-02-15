@@ -16,7 +16,8 @@ public class Modelo {
     private int contadorAciertos=0;
     private int nivel=1;
     private char[] letrasNivelFacil=new char[8];
-    private char[] letrasNivelDificil=new char[27];
+    private char[] letrasNivelMedio=new char[27];
+    private char[] letrasNivelDificil=new char[37];
     private ArrayList<Character> comprobarLetras=new ArrayList();
     private int letraAscii;
     
@@ -64,9 +65,16 @@ public class Modelo {
         
         for(int i=0;i<26;i++){
             letraAscii=i+65;
+            letrasNivelMedio[i]=(char)letraAscii;
             letrasNivelDificil[i]=(char)letraAscii;
         }
+        letrasNivelMedio[26]='Ñ';
         letrasNivelDificil[26]='Ñ';
+        
+        for (int i = 0; i < 10; i++) {
+            letrasNivelDificil[i+27]=(char)(i+48);
+        }
+        System.out.println(letrasNivelDificil);
     }
     
     /**
@@ -78,8 +86,10 @@ public class Modelo {
         char letra;
         if(nivel<3){
             letra= letrasNivelFacil[aleatorio(8,0)];
+        }else if(nivel>=3 && nivel<5){
+            letra= letrasNivelMedio[aleatorio(27,1)];
         }else{
-            letra= letrasNivelDificil[aleatorio(27,1)];
+            letra=letrasNivelDificil[aleatorio(37,1)];
         }
         for (int i = 0; i < comprobarLetras.size(); i++) {
             if(comprobarLetras.get(i)==letra){
