@@ -222,6 +222,7 @@ public class Vista extends JFrame{
      */
     public void modificarNivel(int n){
         nivelPant.setText("Nivel "+n);
+        letra.setNivel(n);
     }
     
     /**

@@ -14,8 +14,13 @@ import javax.swing.Timer;
  */
 public class Letra extends JLabel{
     
-    private int velocidad=50;
+    private final int VEL1=70;
+    private final int VEL2=60;
+    private final int VEL3=50;
+    private final int VEL4=40;
+    private final int VEL5=30;
     private int x,y=0;
+    private int nivel=1;
     private boolean bajar=true;
     ControladorLetra c;
     private Vista v;
@@ -31,7 +36,30 @@ public class Letra extends JLabel{
         x=aleatorio(370,5);
         setBounds(x,y,30,30);
         c=new ControladorLetra(this);
-        new Timer(velocidad, c).start();
+        crearTimer();
+    }
+    
+    /**
+     * crea el timer de caida dependiendo del nivel en el que te encuentras
+     */
+    public void crearTimer(){
+        switch(aleatorio(1,nivel+1)){
+            case 1:
+                new Timer(VEL1, c).start();
+                break;
+            case 2:
+                new Timer(VEL2, c).start();
+                break;
+            case 3:
+                new Timer(VEL3, c).start();
+                break;
+            case 4:
+                new Timer(VEL4, c).start();
+                break;
+            default:
+                new Timer(VEL5, c).start();
+                break;
+        }
     }
     
     /**
@@ -82,11 +110,9 @@ public class Letra extends JLabel{
     public void setBajar(boolean bajar) {
         this.bajar = bajar;
     }
-    
-    public int getVelocidad() {
-        return velocidad;
+
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
     }
-    
-    
     
 }
