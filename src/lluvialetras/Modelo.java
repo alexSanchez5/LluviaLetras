@@ -51,7 +51,7 @@ public class Modelo {
     }
     
     /**
-     * Inicia los arrays con las letras
+     * Inicia los arrays con las letras o numeros
      */
     public void inicializarArrays(){
         letrasNivelFacil[0]='A';
@@ -78,7 +78,7 @@ public class Modelo {
     }
     
     /**
-     * Devuelve la letra que va a aparecer dependiendo del nivel
+     * Devuelve la letra o numero que va a aparecer dependiendo del nivel
      * @return 
      */
     public char darLetra(){
