@@ -244,16 +244,21 @@ public class Vista extends JFrame{
     public void modificarCont(char le){
         for (int i = 0; i < arrayletras.size(); i++) {
             if(arrayletras.get(i).getText().charAt(0)==le){
-                letra.setContadorPulsado(letra.getContadorPulsado()-1);
-                ponerColor(letra.getContadorPulsado(),letra);
+                arrayletras.get(i).setContadorPulsado(arrayletras.get(i).getContadorPulsado()-1);
+                ponerColor(arrayletras.get(i).getContadorPulsado(),arrayletras.get(i));
             }
         }
     }
     /**
      * @return - retorna el contador de veces pulsadas que le faltan a la tecla
      */
-    public int darCont(){
-        return letra.getContadorPulsado();
+    public int darCont(char l){
+        for (int i = 0; i < arrayletras.size(); i++) {
+            if(arrayletras.get(i).getText().charAt(0)==l){
+                return arrayletras.get(i).getContadorPulsado();
+            }
+        }
+        return 0;
     }
     /**
      * pinta la letra del color que le corresponde
@@ -261,7 +266,7 @@ public class Vista extends JFrame{
     public void ponerColor(int n, Letra l){
         switch(n){
             case 1:
-                l.setForeground(Color.green);
+                l.setForeground(Color.orange);
                 break;
             case 2:
                 l.setForeground(Color.red);
