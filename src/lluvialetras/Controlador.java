@@ -130,7 +130,7 @@ public class Controlador implements KeyListener, ActionListener{
     public void comprobarLetra(char letra){
         letra=java.lang.Character.toUpperCase(letra);
         if(!perder){
-            if(v.darCont()==1){
+            if(v.darCont(letra)==1){
                 if(m.eliminar(letra)){
                     v.eliminar(letra);
                     m.sumarContador(true);
