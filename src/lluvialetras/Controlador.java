@@ -69,6 +69,8 @@ public class Controlador implements KeyListener, ActionListener{
             }
         }else if(ae.getActionCommand().equals("Salir")){
             System.exit(0);
+        }else if(ae.getActionCommand().equals("Pausar/Reanudar")){
+            v.pausar();
         }else{
             switch (ae.getActionCommand()) {
                 case "Nivel 1":
