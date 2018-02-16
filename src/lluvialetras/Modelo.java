@@ -138,5 +138,9 @@ public class Modelo {
         this.nivel = nivel;
     }
     
+   public void limpiarComprobar(){
+       comprobarLetras.clear();
+   }
+    
     
 }

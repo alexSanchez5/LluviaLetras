@@ -80,6 +80,9 @@ public class Vista extends JFrame{
         menu=new MenuBar();
         
         archivo=new Menu("Archivo");
+        MenuItem pausar=new MenuItem("Pausar/Reanudar");
+        pausar.addActionListener(c);
+        archivo.add(pausar);
         MenuItem guardar=new MenuItem("Guardar");
         guardar.addActionListener(c);
         archivo.add(guardar);
@@ -276,5 +279,25 @@ public class Vista extends JFrame{
                 break;
         }
         repaint();
+    }
+    
+    public void pausar (){
+        for (int i = 0; i < arrayletras.size(); i++) {
+                this.remove(arrayletras.get(i));
+            }
+        arrayletras.clear();
+        for (int i = 0; i < arrayTimers.size(); i++) {
+            arrayTimers.get(i).stop();
+        }
+        arrayTimers.clear();
+        c.limpiarComprobar();
+    }
+    
+    public void reanudar(int n){
+        for (int i = 0; i < n; i++) {
+            timer=new Timer(velocidadCreacion, c);
+            timer.start();
+            arrayTimers.add(timer);
+        }
     }
 }
