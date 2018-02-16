@@ -18,7 +18,8 @@ import java.awt.event.KeyListener;
  */
 public class Controlador implements KeyListener, ActionListener{
     
-    private Vista v=new Vista(this);
+    private Vista v;
+    private VistaPrincipal vp=new VistaPrincipal(this);
     private Modelo m=new Modelo(this);
     private boolean perder=false;
     private boolean pausa=false;
@@ -72,12 +73,14 @@ public class Controlador implements KeyListener, ActionListener{
             System.exit(0);
         }else if(ae.getActionCommand().equals("Pausar/Reanudar")){
             if(pausa){
-                v.reanudar();
+                v.reanudar(m.getNivel());
                 pausa=false;
             }else{
                 v.pausar();
                 pausa=true;
             }
+        }else if(ae.getActionCommand().equals("empezar el juego")){
+            v=new Vista(this);
         }else{
             switch (ae.getActionCommand()) {
                 case "Nivel 1":
@@ -175,5 +178,9 @@ public class Controlador implements KeyListener, ActionListener{
      */
     public void mandarNivel(){
         v.modificarNivel(m.getNivel());
+    }
+    
+    public void limpiarComprobar(){
+        m.limpiarComprobar();
     }
 }

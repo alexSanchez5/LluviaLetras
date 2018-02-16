@@ -24,14 +24,14 @@ public class VistaPrincipal extends JFrame{
     public VistaPrincipal(Controlador c){
         this.c=c;
         setLayout(null);
-        nom=new JLabel("introduce tu nombre");
-        nom.setBounds(100, 100, 100, 20);
+        nom=new JLabel("Introduce tu Nombre");
+        nom.setBounds(140, 100, 200, 20);
         add(nom);
         nombre=new JTextField(20);
-        nombre.setBounds(100, 150, 100, 20);
+        nombre.setBounds(100, 150, 200, 20);
         add(nombre);
         empezar=new JButton("empezar el juego");
-        empezar.setBounds(120, 200, 50, 30);
+        empezar.setBounds(120, 200, 150, 30);
         empezar.addActionListener(c);
         add(empezar);
         this.getContentPane().setBackground(Color.CYAN);
