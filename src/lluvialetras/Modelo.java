@@ -74,7 +74,6 @@ public class Modelo {
         for (int i = 0; i < 10; i++) {
             letrasNivelDificil[i+27]=(char)(i+48);
         }
-        System.out.println(letrasNivelDificil);
     }
     
     /**
