@@ -18,9 +18,10 @@ import java.awt.event.KeyListener;
  */
 public class Controlador implements KeyListener, ActionListener{
     
-    Vista v=new Vista(this);
-    Modelo m=new Modelo(this);
-    boolean perder=false;
+    private Vista v=new Vista(this);
+    private Modelo m=new Modelo(this);
+    private boolean perder=false;
+    private boolean pausa=false;
     
     @Override
     public void keyTyped(KeyEvent ke) {
@@ -69,6 +70,14 @@ public class Controlador implements KeyListener, ActionListener{
             }
         }else if(ae.getActionCommand().equals("Salir")){
             System.exit(0);
+        }else if(ae.getActionCommand().equals("Pausar/Reanudar")){
+            if(pausa){
+                v.reanudar();
+                pausa=false;
+            }else{
+                v.pausar();
+                pausa=true;
+            }
         }else{
             switch (ae.getActionCommand()) {
                 case "Nivel 1":
