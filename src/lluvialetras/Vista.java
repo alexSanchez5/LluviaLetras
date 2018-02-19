@@ -157,7 +157,7 @@ public class Vista extends JFrame{
             barra2.mover();
         }else if(barra2.getX()>380-barra2.getANCHO()){
             barra1.setDireccion(0);
-            barra1.setX(barra2.getX()-10);
+            barra1.setX(barra1.getX()-10);
             barra1.mover();
             barra2.setDireccion(0);
             barra2.setX(310);
