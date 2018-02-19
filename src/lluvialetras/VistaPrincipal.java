@@ -43,4 +43,8 @@ public class VistaPrincipal extends JFrame{
     public String getNombre() {
         return nombre.toString();
     }
+    
+    public void cerrar(){
+        this.setVisible(false);
+    }
 }
