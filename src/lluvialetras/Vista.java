@@ -24,12 +24,12 @@ import javax.swing.Timer;
 public class Vista extends JFrame{
     
     private Controlador c;
-    private Barra barra;
+    private Barra barra1,barra2;
     private Letra letra;
     private MenuBar menu;
     private Menu archivo;
     private Menu nivel;
-    private JPanel barraPerder;
+    private JPanel barraPerder1,barraPerder2;
     private JLabel gameover,puntuacion,nivelPant;
     private int velocidadCreacion=500;
     private Timer timer;
@@ -52,11 +52,13 @@ public class Vista extends JFrame{
     }
     
     /**
-     * Crea la barra en la que rebotan las letras
+     * Crea la barra1 en la que rebotan las letras
      */
-    public void crearBarra(){
-        barra=new Barra();
-        add(barra);
+    public void crearBarras(){
+        barra1=new Barra(0);
+        add(barra1);
+        barra2=new Barra(580);
+        add(barra2);
     }
     
     /**
@@ -111,12 +113,16 @@ public class Vista extends JFrame{
      */
     public void crearVentana(){
         setLayout(null);
-        crearBarra();
+        crearBarras();
         crearMenu();
-        barraPerder=new JPanel();
-        barraPerder.setBounds(0, 580, 400, 20);
-        barraPerder.setBackground(Color.yellow);
-        add(barraPerder);
+        barraPerder2=new JPanel();
+        barraPerder2.setBounds(0, 580, 400, 20);
+        barraPerder2.setBackground(Color.yellow);
+        add(barraPerder2);
+        barraPerder1=new JPanel();
+        barraPerder1.setBounds(0, 0, 400, 20);
+        barraPerder1.setBackground(Color.yellow);
+        add(barraPerder1);
         this.addKeyListener(c);
         //creo el label de puntuacion y el nivel en el que esta
         puntuacion=new JLabel("Puntuacion: ");
@@ -124,7 +130,7 @@ public class Vista extends JFrame{
         puntuacion.setBounds(10, 600, 200, 50);
         add(puntuacion);
         nivelPant=new JLabel("Nivel 1");
-        nivelPant.setBounds(300, 0, 100, 50);
+        nivelPant.setBounds(300, 20, 100, 50);
         nivelPant.setFont(nivelPant.getFont().deriveFont(20.0f));
         add(nivelPant);
         this.getContentPane().setBackground(Color.CYAN);
@@ -134,21 +140,29 @@ public class Vista extends JFrame{
     }
     
     /**
-     * Cambia la direccion y la posicion de la barra en función del número que le mandes
+     * Cambia la direccion y la posicion de la barra1 en función del número que le mandes
      * @param d - la dirección en la que se va a mover
      */
     public void moverBarra(int d){
-        if(barra.getX()<10){
-            barra.setDireccion(0);
-            barra.setX(10);
-            barra.mover();
-        }else if(barra.getX()>380-barra.getANCHO()){
-            barra.setDireccion(0);
-            barra.setX(310);
-            barra.mover();
+        if(barra1.getX()<10){
+            barra1.setDireccion(0);
+            barra1.setX(10);
+            barra1.mover();
+            barra2.setDireccion(0);
+            barra2.setX(barra2.getX()+10);
+            barra2.mover();
+        }else if(barra2.getX()>380-barra2.getANCHO()){
+            barra1.setDireccion(0);
+            barra1.setX(barra2.getX()-10);
+            barra1.mover();
+            barra2.setDireccion(0);
+            barra2.setX(310);
+            barra2.mover();
         }else{
-            barra.setDireccion(d);
-            barra.mover();
+            barra1.setDireccion(d);
+            barra1.mover();
+            barra2.setDireccion(d);
+            barra2.mover();
         }
         repaint();
     }
@@ -167,16 +181,18 @@ public class Vista extends JFrame{
     }
     
     /**
-     * Primero comprueba si choca con la barra de abajo, y después si choca con la barra pequeña. Si 
-     * choca con la barra pequeña, se cambia la dirección de movimiento de la letra. Si no, pierde y se 
-     * limpia la pantalla
+     * Primero comprueba si choca con la barra1 de abajo, y después si choca con la barra1 pequeña. Si 
+ choca con la barra1 pequeña, se cambia la dirección de movimiento de la letra. Si no, pierde y se 
+ limpia la pantalla
      */
     public void chocar(){
         boolean choca=false;
         for (int i = 0; i < arrayletras.size()-1; i++) {
-            if(arrayletras.get(i).getBounds().intersects(barraPerder.getBounds()) || arrayletras.get(i).getY()<0){
-                if(arrayletras.get(i).getBounds().intersects(barra.getBounds())){
+            if(arrayletras.get(i).getBounds().intersects(barraPerder2.getBounds()) || arrayletras.get(i).getBounds().intersects(barraPerder1.getBounds())){
+                if(arrayletras.get(i).getBounds().intersects(barra2.getBounds()) ){
                     arrayletras.get(i).setBajar(false);
+                }else if(arrayletras.get(i).getBounds().intersects(barra1.getBounds())){
+                    arrayletras.get(i).setBajar(true);
                 }else {
                     choca=true;
                     c.setPerder(true);
