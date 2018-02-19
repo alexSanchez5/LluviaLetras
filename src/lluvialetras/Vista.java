@@ -30,7 +30,7 @@ public class Vista extends JFrame{
     private Menu archivo;
     private Menu nivel;
     private JPanel barraPerder1,barraPerder2;
-    private JLabel gameover,puntuacion,nivelPant;
+    private JLabel gameover,puntuacion,nivelPant,nombre;
     private int velocidadCreacion=500;
     private Timer timer;
     ArrayList<Letra>arrayletras=new ArrayList();
@@ -133,6 +133,10 @@ public class Vista extends JFrame{
         nivelPant.setBounds(300, 20, 100, 50);
         nivelPant.setFont(nivelPant.getFont().deriveFont(20.0f));
         add(nivelPant);
+        nombre=new JLabel("");
+        nombre.setBounds(10, 20, 150, 50);
+        nombre.setFont(nombre.getFont().deriveFont(20.0f));
+        add(nombre);
         this.getContentPane().setBackground(Color.CYAN);
         this.setBounds(100, 0, 400, 700);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -240,6 +244,7 @@ public class Vista extends JFrame{
     public void modificarNivel(int n){
         nivelPant.setText("Nivel "+n);
         letra.setNivel(n);
+        barra1.aumentarNivel();
     }
     
     /**
@@ -285,7 +290,7 @@ public class Vista extends JFrame{
     public void ponerColor(int n, Letra l){
         switch(n){
             case 1:
-                l.setForeground(Color.orange);
+                l.setForeground(Color.blue);
                 break;
             case 2:
                 l.setForeground(Color.red);
@@ -315,5 +320,9 @@ public class Vista extends JFrame{
             timer.start();
             arrayTimers.add(timer);
         }
+    }
+
+    public JLabel getNombre() {
+        return nombre;
     }
 }
