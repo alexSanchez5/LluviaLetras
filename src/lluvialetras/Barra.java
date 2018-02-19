@@ -44,7 +44,7 @@ public class Barra extends JPanel{
      * Separa las barras en las que rebotan las letras
      */
     public void aumentarNivel(){
-        x-=10;
+        x-=30;
         this.setBounds(x, y, ANCHO, ALTO);
        
     }
