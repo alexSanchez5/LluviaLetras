@@ -81,6 +81,7 @@ public class Controlador implements KeyListener, ActionListener{
             }
         }else if(ae.getActionCommand().equals("empezar el juego")){
             v=new Vista(this);
+            v.getNombre().setText(vp.getNombre());
             vp.cerrar();
         }else{
             switch (ae.getActionCommand()) {

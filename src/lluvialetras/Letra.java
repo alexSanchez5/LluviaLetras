@@ -5,7 +5,6 @@
  */
 package lluvialetras;
 
-import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 
@@ -21,7 +20,7 @@ public class Letra extends JLabel{
     private final int VEL4=40;
     private final int VEL5=30;
     private int contadorPulsado;
-    private int x,y=0;
+    private int x,y=20;
     private int nivel=1;
     private boolean bajar=true;
     ControladorLetra c;
