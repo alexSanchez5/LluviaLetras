@@ -81,6 +81,7 @@ public class Controlador implements KeyListener, ActionListener{
             }
         }else if(ae.getActionCommand().equals("empezar el juego")){
             v=new Vista(this);
+            vp.cerrar();
         }else{
             switch (ae.getActionCommand()) {
                 case "Nivel 1":
@@ -142,16 +143,18 @@ public class Controlador implements KeyListener, ActionListener{
     public void comprobarLetra(char letra){
         letra=java.lang.Character.toUpperCase(letra);
         if(!perder){
-            if(v.darCont(letra)==1){
-                if(m.eliminar(letra)){
-                    v.eliminar(letra);
-                    m.sumarContador(true);
+            if(m.comprobar(letra)){
+                if(v.darCont(letra)==1){
+                    if(m.eliminar(letra)){
+                        v.eliminar(letra);
+                        m.sumarContador(true);
+                    }
                 }else{
-                    v.getContentPane().setBackground(Color.red);
-                    m.sumarContador(false);
+                    v.modificarCont(letra);
                 }
             }else{
-                v.modificarCont(letra);
+                v.getContentPane().setBackground(Color.red);
+                m.sumarContador(false);
             }
         }
         mandarPuntuacion();       
