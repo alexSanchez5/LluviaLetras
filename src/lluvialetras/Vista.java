@@ -244,7 +244,7 @@ public class Vista extends JFrame{
     public void modificarNivel(int n){
         nivelPant.setText("Nivel "+n);
         letra.setNivel(n);
-        barra1.aumentarNivel();
+        barra1.aumentarNivel(n,barra2.getX());
     }
     
     /**
@@ -261,6 +261,8 @@ public class Vista extends JFrame{
             timer.start();
             arrayTimers.add(timer);
         }
+        letra.setNivel(nivel);
+        barra1.aumentarNivel(nivel,barra2.getX());
     }
     /**
      * este metodo cambia las veces que le faltan por pulsar a la tecla.

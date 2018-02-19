@@ -46,7 +46,8 @@ public class Letra extends JLabel{
      * crea el timer de caida dependiendo del nivel en el que te encuentras
      */
     public void crearTimer(){
-        switch(aleatorio(1,nivel+1)){
+        System.out.println(nivel);
+        switch(aleatorio(nivel+1,1)){
             case 1:
                 new Timer(VEL1, c).start();
                 break;
