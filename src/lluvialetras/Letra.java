@@ -21,7 +21,7 @@ public class Letra extends JLabel{
     private final int VEL5=30;
     private int contadorPulsado;
     private int x,y=20;
-    private int nivel=1;
+    static private int nivel=1;
     private boolean bajar=true;
     ControladorLetra c;
     private Vista v;
@@ -46,7 +46,6 @@ public class Letra extends JLabel{
      * crea el timer de caida dependiendo del nivel en el que te encuentras
      */
     public void crearTimer(){
-        System.out.println(nivel);
         switch(aleatorio(nivel+1,1)){
             case 1:
                 new Timer(VEL1, c).start();
