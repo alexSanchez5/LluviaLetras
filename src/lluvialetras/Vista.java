@@ -31,7 +31,7 @@ public class Vista extends JFrame{
     private Menu nivel;
     private JPanel barraPerder1,barraPerder2;
     private JLabel gameover,puntuacion,nivelPant,nombre;
-    private int velocidadCreacion=500;
+    private int velocidadCreacion=1100;
     private Timer timer;
     ArrayList<Letra>arrayletras=new ArrayList();
     ArrayList<Timer> arrayTimers=new ArrayList();
@@ -226,6 +226,7 @@ public class Vista extends JFrame{
      * Crea un nuevo timer para aumentar la velocidad de creación de las letras
      */
     public void aumentarVelocidad() {
+        velocidadCreacion+=100;
         Timer timer=new Timer(velocidadCreacion, c);
         timer.start();
         arrayTimers.add(timer);
@@ -256,7 +257,9 @@ public class Vista extends JFrame{
             arrayTimers.get(i).stop();
         }
         arrayTimers.clear();
+        velocidadCreacion=1100;
         for (int i = 0; i < nivel; i++) {
+            velocidadCreacion+=100;
             Timer timer=new Timer(velocidadCreacion, c);
             timer.start();
             arrayTimers.add(timer);

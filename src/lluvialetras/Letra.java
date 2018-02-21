@@ -14,11 +14,11 @@ import javax.swing.Timer;
  */
 public class Letra extends JLabel{
     
-    private final int VEL1=70;
-    private final int VEL2=60;
-    private final int VEL3=50;
-    private final int VEL4=40;
-    private final int VEL5=30;
+    private final int VEL1=110;
+    private final int VEL2=100;
+    private final int VEL3=90;
+    private final int VEL4=80;
+    private final int VEL5=70;
     private int contadorPulsado;
     private int x,y=20;
     static private int nivel=1;
