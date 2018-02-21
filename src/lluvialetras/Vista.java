@@ -306,7 +306,9 @@ public class Vista extends JFrame{
         }
         repaint();
     }
-    
+    /**
+     * este metodo limpia todos los arrays que utiliza, para todos los Timers que estan en juego y limpia ese array, y manda al controlador que limpie los arrays del modelo
+     */
     public void pausar (){
         for (int i = 0; i < arrayletras.size(); i++) {
                 this.remove(arrayletras.get(i));
@@ -318,7 +320,10 @@ public class Vista extends JFrame{
         arrayTimers.clear();
         c.limpiarComprobar();
     }
-    
+    /**
+     * este metodo crea otra vez todos los Timers necesarios para volver al nivel en el que esta.
+     * @param n - nivel por el cual el jugador iba cuando le dio a pausar
+     */
     public void reanudar(int n){
         for (int i = 0; i < n; i++) {
             timer=new Timer(velocidadCreacion, c);

@@ -150,7 +150,9 @@ public class Modelo {
     public void setNivel(int nivel) {
         this.nivel = nivel;
     }
-    
+    /**
+     * este metodo limpia el array que comprueba si la letra esta en pantalla o no
+     */
    public void limpiarComprobar(){
        comprobarLetras.clear();
    }

@@ -43,7 +43,9 @@ public class VistaPrincipal extends JFrame{
     public String getNombre() {
         return nombre.getText();
     }
-    
+    /**
+     * este metodo deja la vista no visible para que solo se vea la 2º vista
+     */
     public void cerrar(){
         this.setVisible(false);
     }

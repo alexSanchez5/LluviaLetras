@@ -183,7 +183,9 @@ public class Controlador implements KeyListener, ActionListener{
     public void mandarNivel(){
         v.modificarNivel(m.getNivel());
     }
-    
+    /**
+     * este metodo manda al modelo que limpie el array con el que compruebo
+     */
     public void limpiarComprobar(){
         m.limpiarComprobar();
     }
